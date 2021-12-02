@@ -16,8 +16,6 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-            string err = "";
-            UserActions.DeleteUser(4, ref err);
         }
     }
 }
