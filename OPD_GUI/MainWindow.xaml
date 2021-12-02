@@ -1,0 +1,128 @@
+﻿<Window x:Class="OPD_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OPD_GUI"
+        xmlns:u="clr-namespace:DataControl.Utils;assembly=DataControl"
+        xmlns:a="clr-namespace:DataControl.Model;assembly=DataControl"
+        mc:Ignorable="d" 
+        Title="Oren Pildus Designs" Height="800" Width="1280" 
+        FontFamily="Bebas Neue" FontSize="20" Foreground="White" WindowStyle="None" Icon="/images/pedal.png"
+        ResizeMode="NoResize"        WindowStartupLocation="CenterScreen" >
+    
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/mainbackground.jpg" Stretch="Fill" TileMode="None"/>
+    </Window.Background>
+    
+    <!-- Main Grid Definitions-->
+    <Grid DockPanel.Dock="Top" HorizontalAlignment="Left" 
+          Name="grid1" ShowGridLines="false"  Width="1280"
+          Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="Black"></Setter>
+            </Style>
+            <Style TargetType="TabItem">
+                
+                <!-- <Setter Property="Foreground" Value="DarkSlateGray"></Setter> -->
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="Height" Value="120"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabItem">
+                            <Border Name="Border" Background="Transparent" Opacity="0.9" CornerRadius="5" Margin="0,10,0,10">
+                                <ContentPresenter x:Name="ContentSite"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                ContentSource="Header"
+                                Margin="10,2"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" SourceName="Border">
+                                    <Setter TargetName="Border" Property="Background" Value="gray" />
+                                    <Setter TargetName="Border" Property="Opacity" Value="0.5" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="TabControl">
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+            </Style>
+        </Grid.Resources>
+        
+        <!-- Top Area-->
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="920"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Rectangle Stroke="Black" StrokeThickness="2" Grid.Row="0" Fill="LightGray" Grid.ColumnSpan="4" />
+
+            <Label Name="lblHello" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Hello"  
+                   Grid.Column="0"/>
+            
+            <Image Width="40" Height="40" Source="/images/logout2.png" Grid.Column="0" 
+                   VerticalAlignment="Center" HorizontalAlignment="Right"
+                   MouseLeftButtonDown="LogoutBtn_MouseLeftButtonDown" Cursor="Hand" />
+            
+            <!-- Shopping Cart Icon-->
+            <StackPanel Name="ShoppingCartStackPanel" Grid.Column="1" Margin="0,5,0,0"  >
+                <Image  Source="images/ShoppingCart.png" Width="40" Height="40"  />
+                <TextBlock PreviewMouseLeftButtonDown="ShoppingCart_MouseLeftButtonDown" 
+                           Name="ShoppingCartCount" Text="(0)" FontSize="16" Cursor="Hand" 
+                           Foreground="DarkOrange" HorizontalAlignment="Center">
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Top Menu-->
+            <StackPanel Name="EffectStackPanel"
+            HorizontalAlignment="Center"  VerticalAlignment="Center"  
+                        Orientation="Horizontal" Grid.Column="2" Margin="5,5,5,5" >
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                        <Setter Property="Cursor" Value="Hand"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+
+        
+
+
+            <Image Width="40" Height="40" Source="/images/exit.png" Grid.Column="3" VerticalAlignment="Center"
+                   MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown" Cursor="Hand" />
+
+
+
+        </Grid>
+
+
+        <!-- Products Tabs-->
+        <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                    Name="ProductStackPanel" TabStripPlacement="Left" 
+                    Margin="0, 0, 0, 10" SelectionChanged="OnSelectionChanged" >
+
+           
+        </TabControl>
+    </Grid>
+</Window>
