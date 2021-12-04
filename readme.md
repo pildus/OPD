@@ -27,7 +27,7 @@ The project loosely implements the **Factory** design pattern.
 
 - _ **Download the code source:** _
 
-Download or clone the Github code from: [https://github.com/pildus/OrenPildusDesigns](https://github.com/pildus/OrenPildusDesigns)
+Download or clone the Github code from: [https://github.com/pildus/OPD](https://github.com/pildus/OPD)
 
 - _ **Running the Demo:** _
 
